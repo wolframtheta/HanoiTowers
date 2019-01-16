@@ -33,6 +33,8 @@ def do_move(hanoi_game):
 
     :param hanoi_game: The game instance the program is using.
     :return: True if the move reached a finishing state, False otherwise.
+    en tomas es guapo
+
     """
 
     done = False
