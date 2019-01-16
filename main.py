@@ -60,7 +60,7 @@ def do_move(hanoi_game):
 
 game_options = """
 What do you want to do?
-    1.- Do a movement
+    1.- Do a movem
     2.- Show current state
     3.- Show optimal solution
     0.- Quit"""
