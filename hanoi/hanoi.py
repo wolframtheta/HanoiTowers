@@ -33,8 +33,10 @@ class HanoiGame:
         # 4.- Solve and store the optimal solution
 
         if n_discs < 0:
-            raise HanoiException("Introduce a correct number of disks")
-
+            raise HanoiException("Number of disks must be positive")
+        if n_towers < 3:
+            raise HanoiException("Number of towers must be more or equal to 3")
+        
         self.towers = []
         self.states = []
         # for i in range(n_towers)
@@ -59,6 +61,8 @@ class HanoiGame:
 
         :return: The number of disks of this game.
         """
+
+
         raise NotImplementedError()
 
     def get_n_towers(self):

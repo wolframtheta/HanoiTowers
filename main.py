@@ -72,9 +72,22 @@ def play_game():
     """
 
     n_discs = get_int_value("How many discs do you want?\n", 1, 10)
-    hanoi_game = HanoiGame(n_discs)
+    # hanoi_game = HanoiGame(n_discs)
+    #
+    # print(hanoi_game)
+    res = ""
+    for i in range(n_discs):
+        for j in range((n_discs*2)+1):
+            if j == n_discs:
+                res += '|'
+            elif (j >= n_discs-i-1 and j < n_discs) or (j <= n_discs+i+1 and j > n_discs):
+                res += '#'
+            else: res += '.'
 
-    print(hanoi_game)
+            ++j
+        print(res)
+        res = ""
+        ++i
 
     quit_game = False
 
