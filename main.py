@@ -1,6 +1,6 @@
 from hanoi.hanoi import HanoiGame
 from hanoi.hanoi_exception import HanoiException
-
+from hanoi.tower import Tower
 
 def get_int_value(message, range_start, range_end):
     """
@@ -164,4 +164,7 @@ def show_menu():
 
 
 if __name__ == '__main__':
-    show_menu()
+    #show_menu()
+    t = Tower(6)
+    t.push_disc(4)
+    print(t)
