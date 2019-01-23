@@ -6,11 +6,12 @@ class Tower:
     Class for storing and managing Hanoi game towers.
     """
 
-    def __init__(self):
+    def __init__(self, ndiscs):             #ndiscs = numero de discs totals que caben a la torre, discs = discs que hi ha actualment
         """
         Initializes the tower.
         """
         self.discs = []
+        self.ndiscs = ndiscs
 
     def is_empty(self):
         """
@@ -18,7 +19,11 @@ class Tower:
 
         :return: True if is empty, it is, if the tower has no discs, False otherwise
         """
-        raise NotImplementedError()
+        if len(self.discs) == 0:
+            return True
+        else:
+            return False
+
 
     def size(self):
         """
@@ -26,7 +31,8 @@ class Tower:
 
         :return: The size (number of discs) of the tower.
         """
-        raise NotImplementedError()
+        return len(self.discs)
+
 
     def pop_disc(self):
         """
@@ -35,7 +41,9 @@ class Tower:
 
         :return: The disc removed from the top of the tower.
         """
-        raise NotImplementedError()
+        if len(self.discs) == 0:
+            raise HanoiException ("No hay ningun disco en esta torre!")
+        return self.discs.pop
 
     '''
         Inserta un disco encima de la torre.
@@ -47,7 +55,10 @@ class Tower:
 
         :param disc: The disc to be added to the top of the tower.
         """
-        raise NotImplementedError()
+        if len(self.discs) > 0 and self.discs[-1] < disc:
+            raise HanoiException ("El disco es mayor!")
+        return self.discs.append(disc)
+
 
     def as_list(self):
         """
@@ -56,7 +67,8 @@ class Tower:
 
         :return: A list containing the discs of the tower.
         """
-        raise NotImplementedError()
+        return self.discs.copy
+
 
     def __repr__(self):
         """
@@ -65,7 +77,9 @@ class Tower:
 
         :return: A string with the internal representation of the state.
         """
-        raise NotImplementedError()
+
+        return ",".join(str(x) for x in self.discs)                       #posa una coma entre cada element i ho ajunta "juntame este array y pon esto en medio"
+
 
     def __str__(self):
         """
@@ -73,4 +87,12 @@ class Tower:
 
         :return: A string with the representation of the state in the requested format
         """
-        raise NotImplementedError()
+
+        lista = []
+        for i in range (0, self.ndiscs - len(self.discs)):                #genera ndiscs torres amb punts
+                lista.append("."*self.ndiscs + "|" + "."*self.ndiscs)
+        for i in range (self.ndiscs - len(self.discs), self.ndiscs):        #genera linies amb i sense discs (#)
+            index = -(i - (self.ndiscs - len(self.discs)) + 1)
+            lista.append("."*(self.ndiscs - self.discs[index]) + "#"*self.discs[index] + "|" + "#"*self.discs[index] + "."*(self.ndiscs - self.discs[index]))
+
+        return "\n".join(lista)
