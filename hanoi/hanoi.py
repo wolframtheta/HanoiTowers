@@ -36,13 +36,16 @@ class HanoiGame:
             raise HanoiException("Number of disks must be positive")
         if n_towers < 3:
             raise HanoiException("Number of towers must be more or equal to 3")
-        
+
         self.towers = []
         self.states = []
+        self.n_discs = n_discs
+        self.n_towers = n_towers
+        self.is_finished = False
         # for i in range(n_towers)
         #     self.towers.append()
 
-        self._solve()
+        # self._solve()
 
     def get_state(self, step):
         """
@@ -53,7 +56,11 @@ class HanoiGame:
         :param step: The step index in the optimal solution.
         :return: The state at the requested step in the optimal solution.
         """
-        raise NotImplementedError()
+
+        try:
+            return self.states[step]
+        except HanoiException:
+            raise NotImplementedError()
 
     def get_n_discs(self):
         """
@@ -62,8 +69,10 @@ class HanoiGame:
         :return: The number of disks of this game.
         """
 
-
-        raise NotImplementedError()
+        try:
+            return self.n_discs
+        except HanoiException:
+            raise NotImplementedError()
 
     def get_n_towers(self):
         """
@@ -71,7 +80,10 @@ class HanoiGame:
 
         :return: The number of towers of this game.
         """
-        raise NotImplementedError()
+        try:
+            return self.n_towers
+        except HanoiException:
+            raise NotImplementedError()
 
     def get_n_states(self):
         """
@@ -135,7 +147,11 @@ class HanoiGame:
 
         :return: True if the game is finished, False otherwise.
         """
-        raise NotImplementedError()
+
+        try:
+            return self.is_finished
+        except HanoiException:
+            raise NotImplementedError()
 
     def get_current_state(self):
         """
@@ -154,12 +170,24 @@ class HanoiGame:
         """
         raise NotImplementedError()
 
-
     def __str__(self):
         """
         Returns a string with the representation of the current state of the game in the requested format.
 
         :return: A string with the representation of the current state of the game in the requested format
         """
-        raise NotImplementedError()
+
+        t1 = [3, 2, 1]
+        t2 = []
+        t3 = []
+
+        res = ""
+        for i in range(self.n_discs - 1, -1, -1):
+            res += (print_line_2(self.n_discs, t1[i] if len(t1) > i else 0) + ' '
+                    + print_line_2(self.n_discs, t2[i] if len(t2) > i else 0) + ' '
+                    + print_line_2(self.n_discs, t3[i] if len(t3) > i else 0) + '\n')
+        return res
+
+def print_line_2(n_discs, actual):
+    return '.' * (n_discs - actual) + ('#' * actual) + '|' + (actual * '#') + '.' * (n_discs - actual)
 
