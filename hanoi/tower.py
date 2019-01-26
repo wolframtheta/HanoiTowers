@@ -6,12 +6,12 @@ class Tower:
     Class for storing and managing Hanoi game towers.
     """
 
-    def __init__(self, ndiscs):             #ndiscs = numero de discs totals que caben a la torre, discs = discs que hi ha actualment
+    def __init__(self, n_discs):             #ndiscs = numero de discs totals que caben a la torre, discs = discs que hi ha actualment
         """
         Initializes the tower.
         """
         self.discs = []
-        self.ndiscs = ndiscs
+        self.n_discs = n_discs
 
     def is_empty(self):
         """
@@ -88,11 +88,11 @@ class Tower:
         :return: A string with the representation of the state in the requested format
         """
 
-        lista = []
-        for i in range (0, self.ndiscs - len(self.discs)):                #genera ndiscs torres amb punts
-                lista.append("."*self.ndiscs + "|" + "."*self.ndiscs)
-        for i in range (self.ndiscs - len(self.discs), self.ndiscs):        #genera linies amb i sense discs (#)
-            index = -(i - (self.ndiscs - len(self.discs)) + 1)
-            lista.append("."*(self.ndiscs - self.discs[index]) + "#"*self.discs[index] + "|" + "#"*self.discs[index] + "."*(self.ndiscs - self.discs[index]))
+        res = ""
+        for i in range(self.n_discs - 1, -1, -1):
+            res += (print_line(self.n_discs, self.discs[i] if len(self.discs) > i else 0) + '\n')
+        return res
 
-        return "\n".join(lista)
+
+def print_line(n_discs, actual):
+    return '.'*(n_discs - actual) + ('#'*actual) + '|' + (actual*'#') + '.'*(n_discs - actual)
