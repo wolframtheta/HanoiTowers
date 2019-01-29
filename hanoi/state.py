@@ -10,7 +10,7 @@ class State:
     NON_DISC_CHAR = '.'
     ROD_CHAR = '|'
 
-    def __init__(self, move_id, depth, moved_disc, source, target, towers, n_discs):
+    def __init__(self, move_id, depth, moved_disc, source, target, n_discs):
         """
         Initializes a state with all the information needed to represent it in the requested format.
 
@@ -30,11 +30,11 @@ class State:
         self.source = source
         self.target = target
         self.n_discs = n_discs
-
-        self.towers = []
-
-        # How the towers will be stored? Directly? Is that a good idea?
-        raise NotImplementedError()
+        #
+        # self.towers = []
+        #
+        # # How the towers will be stored? Directly? Is that a good idea?
+        # raise NotImplementedError()
 
     def get_tower(self, idx):
         """
