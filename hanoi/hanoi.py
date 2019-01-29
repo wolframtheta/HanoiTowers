@@ -122,7 +122,14 @@ class HanoiGame:
         :param aux: Tower to be used as auxiliary.
         :param depth: Depth of the recursion call. Useful as information for the optimal state.
         """
-        raise NotImplementedError()
+
+        # Recursive Python function to solve tower of hanoi
+
+        if n > 0:
+            hanoiBasic(n - 1, source, aux, target)
+            moveHanoi(source, target)
+            hanoiBasic(n - 1, aux, target, source)
+
 
     def print_optimal_state(self, step):
         """
@@ -136,7 +143,8 @@ class HanoiGame:
         """
         Prints all the states of the optimal solution in the required format.
         """
-        raise NotImplementedError()
+        print("0")
+
 
 
     def is_finished(self):
