@@ -43,7 +43,7 @@ class Tower:
         """
         if len(self.discs) == 0:
             raise HanoiException ("No hay ningun disco en esta torre!")
-        return self.discs.pop
+        return self.discs.pop()
 
     '''
         Inserta un disco encima de la torre.
@@ -56,7 +56,7 @@ class Tower:
         :param disc: The disc to be added to the top of the tower.
         """
         if len(self.discs) > 0 and self.discs[-1] < disc:
-            raise HanoiException ("El disco es mayor!")
+            raise HanoiException("El disco es mayor!")
         return self.discs.append(disc)
 
 
