@@ -1,3 +1,5 @@
+from builtins import range
+
 from hanoi.hanoi import HanoiGame
 from hanoi.hanoi_exception import HanoiException
 
@@ -65,6 +67,13 @@ What do you want to do?
     3.- Show optimal solution
     0.- Quit"""
 
+# def print_line(n_discs, actual_t1, actual_t2, actual_t3):
+#     return '.'*(n_discs-actual_t1) + ('#'*actual_t1) + '|' + (actual_t1*'#') + '.'*(n_discs-actual_t1) + \
+#            ' ' + '.'*(n_discs-actual_t2) + ('#'*actual_t2) + '|' + (actual_t2*'#') + '.'*(n_discs-actual_t2) + \
+#            ' ' + '.'*(n_discs-actual_t3) + ('#'*actual_t3) + '|' + (actual_t3*'#') + '.'*(n_discs-actual_t3)
+#
+# def print_line_2(n_discs, actual):
+#     return '.'*(n_discs-actual) + ('#'*actual) + '|' + (actual*'#') + '.'*(n_discs-actual)
 
 def play_game():
     """
