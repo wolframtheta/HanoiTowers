@@ -153,6 +153,8 @@ class HanoiGame:
 
         :return: The current state of the game.
         """
+
+
         return self.states[-1]
 
     def __repr__(self):
