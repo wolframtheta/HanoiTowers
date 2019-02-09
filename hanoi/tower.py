@@ -6,12 +6,12 @@ class Tower:
     Class for storing and managing Hanoi game towers.
     """
 
-    def __init__(self, n_discs):             #ndiscs = numero de discs totals que caben a la torre, discs = discs que hi ha actualment
+    def __init__(self):
         """
         Initializes the tower.
         """
         self.discs = []
-        self.n_discs = n_discs
+        self.id = id
 
     def is_empty(self):
         """
@@ -19,10 +19,7 @@ class Tower:
 
         :return: True if is empty, it is, if the tower has no discs, False otherwise
         """
-        if len(self.discs) == 0:
-            return True
-        else:
-            return False
+        return len(self.discs) == 0
 
 
     def size(self):
@@ -45,9 +42,6 @@ class Tower:
             raise HanoiException ("No hay ningun disco en esta torre!")
         return self.discs.pop()
 
-    '''
-        Inserta un disco encima de la torre.
-    '''
     def push_disc(self, disc):
         """
         Adds a dis to the top of the tower.
@@ -67,7 +61,7 @@ class Tower:
 
         :return: A list containing the discs of the tower.
         """
-        return self.discs.copy
+        return self.discs.copy()
 
 
     def __repr__(self):
@@ -78,7 +72,7 @@ class Tower:
         :return: A string with the internal representation of the state.
         """
 
-        return ",".join(str(x) for x in self.discs)                       #posa una coma entre cada element i ho ajunta "juntame este array y pon esto en medio"
+        return ",".join(str(x) for x in self.discs)
 
 
     def __str__(self):
@@ -87,12 +81,3 @@ class Tower:
 
         :return: A string with the representation of the state in the requested format
         """
-
-        res = ""
-        for i in range(self.n_discs - 1, -1, -1):
-            res += (print_line(self.n_discs, self.discs[i] if len(self.discs) > i else 0) + '\n')
-        return res
-
-
-def print_line(n_discs, actual):
-    return '.'*(n_discs - actual) + ('#'*actual) + '|' + (actual*'#') + '.'*(n_discs - actual)

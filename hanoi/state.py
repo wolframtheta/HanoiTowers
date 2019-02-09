@@ -10,7 +10,7 @@ class State:
     NON_DISC_CHAR = '.'
     ROD_CHAR = '|'
 
-    def __init__(self, move_id, depth, moved_disc, source, target, n_discs):
+    def __init__(self, move_id, depth, moved_disc, source, target, towers, n_discs):
         """
         Initializes a state with all the information needed to represent it in the requested format.
 
@@ -31,7 +31,9 @@ class State:
         self.target = target
         self.n_discs = n_discs
         #
-        # self.towers = []
+        self.towers = []
+        for x in towers:
+            self.towers.append(x.as_list())
         #
         # # How the towers will be stored? Directly? Is that a good idea?
         # raise NotImplementedError()
@@ -44,7 +46,8 @@ class State:
         :param idx: Index of the tower.
         :return: The tower corresponding to the idx.
         """
-        raise NotImplementedError()
+
+        return self.towers[idx]
 
     def __repr__(self):
         """
@@ -61,4 +64,16 @@ class State:
 
         :return: A string with the representation of the state in the requested format
         """
-        raise NotImplementedError()
+        res = ""
+        if self.move_id != None:
+            res = "Move id " + str(self.move_id) + " Rec Depth " + str(self.depth) + '\n' + "Last move: " + str(self.moved_disc) + " Disk, from " + str(self.source) + " to " + str(self.target) + '\n'
+
+        for i in range(self.n_discs - 1, -1, -1):
+            res += (print_line(self.n_discs, self.towers[0][i] if len(self.towers[0]) > i else 0) + ' ' +
+                    print_line(self.n_discs, self.towers[1][i] if len(self.towers[1]) > i else 0) + ' ' +
+                    print_line(self.n_discs, self.towers[2][i] if len(self.towers[2]) > i else 0) + '\n')
+        res += "Tower 1".center((self.n_discs * 2) + 1) + ' ' + "Tower 2".center((self.n_discs * 2) + 1) + ' ' + "Tower 3".center((self.n_discs * 2) + 1) + '\n'
+        return res
+
+def print_line(n_discs, actual):
+    return '.' * (n_discs - actual) + ('#' * actual) + '|' + (actual * '#') + '.' * (n_discs - actual)
