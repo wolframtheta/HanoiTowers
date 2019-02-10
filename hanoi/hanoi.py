@@ -66,7 +66,7 @@ class HanoiGame:
 
         if step < 0 or step > len(self.states):
             raise HanoiException("Step index negative or bigger than the total of states in optimal solution")
-        return self.states[step]
+        return self.states[step-1]
 
     def get_n_discs(self):
         """
@@ -91,7 +91,7 @@ class HanoiGame:
 
         :return: The number of states of the optimal solution.
         """
-        return len(self.states)
+        return len(self.states)+1
 
     def move(self, source, target, move_id=None, depth=None):
         """
@@ -128,7 +128,7 @@ class HanoiGame:
         Generates and stores the optimal solution, reinitializing the towers afterwards.
         """
 
-        self._solve_rec(self.n_discs, 0, 2, 1, 0)
+        self._solve_rec(self.n_discs, 0, 2, 1, 1)
         self.towers = []
         self.reset()
 
@@ -146,7 +146,7 @@ class HanoiGame:
 
         if n_discs > 0:
             self._solve_rec(n_discs - 1, source, aux, target, depth + 1)
-            self.move(source, target, depth)
+            self.move(source, target, 0, depth)
             self._solve_rec(n_discs - 1, aux, target, source, depth + 1)
 
     def print_optimal_state(self, step):

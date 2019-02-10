@@ -66,7 +66,7 @@ class State:
         """
         res = ""
         if self.move_id != None:
-            res = "Move id " + str(self.move_id) + " Rec Depth " + str(self.depth) + '\n' + "Last move: " + str(self.moved_disc) + " Disk, from " + str(self.source) + " to " + str(self.target) + '\n'
+            res = "\nMove id " + str(self.move_id) + " Rec Depth " + str(self.depth) + '\n' + "Last move: " + str(self.moved_disc) + " Disk, from " + str(self.source) + " to " + str(self.target) + '\n'
 
         for i in range(self.n_discs - 1, -1, -1):
             res += (print_line(self.n_discs, self.towers[0][i] if len(self.towers[0]) > i else 0) + ' ' +

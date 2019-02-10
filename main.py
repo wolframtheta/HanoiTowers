@@ -1,5 +1,3 @@
-from builtins import range
-
 from hanoi.hanoi import HanoiGame
 from hanoi.hanoi_exception import HanoiException
 

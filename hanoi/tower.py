@@ -11,7 +11,6 @@ class Tower:
         Initializes the tower.
         """
         self.discs = []
-        self.id = id
 
     def is_empty(self):
         """
