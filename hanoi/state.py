@@ -66,14 +66,16 @@ class State:
         """
         res = ""
         if self.move_id != None:
-            res = "\nMove id " + str(self.move_id) + " Rec Depth " + str(self.depth) + '\n' + "Last move: " + str(self.moved_disc) + " Disk, from " + str(self.source) + " to " + str(self.target) + '\n'
+            res = "\nMove id " + str(self.move_id) + " Rec Depth " + str(self.depth) + '\n' + "Last move: " \
+                  + str(self.moved_disc) + " Disk, from " + str(self.source) + " to " + str(self.target) + '\n'
 
         for i in range(self.n_discs - 1, -1, -1):
             res += (print_line(self.n_discs, self.towers[0][i] if len(self.towers[0]) > i else 0) + ' ' +
                     print_line(self.n_discs, self.towers[1][i] if len(self.towers[1]) > i else 0) + ' ' +
                     print_line(self.n_discs, self.towers[2][i] if len(self.towers[2]) > i else 0) + '\n')
-        res += "Tower 1".center((self.n_discs * 2) + 1) + ' ' + "Tower 2".center((self.n_discs * 2) + 1) + ' ' + "Tower 3".center((self.n_discs * 2) + 1) + '\n'
+        res += "Tower 1".center((self.n_discs * 2) + 1) + ' ' + "Tower 2".center((self.n_discs * 2) + 1) + ' ' \
+               + "Tower 3".center((self.n_discs * 2) + 1) + '\n'
         return res
 
 def print_line(n_discs, actual):
-    return '.' * (n_discs - actual) + ('#' * actual) + '|' + (actual * '#') + '.' * (n_discs - actual)
+    return State.NON_DISC_CHAR * (n_discs - actual) + (State.DISC_CHAR * actual) + State.ROD_CHAR + (actual * State.DISC_CHAR) + State.NON_DISC_CHAR * (n_discs - actual)

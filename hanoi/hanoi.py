@@ -43,7 +43,6 @@ class HanoiGame:
         self.n_towers = n_towers
 
         self.reset()
-        self.finished = False
         self.moves = 0
         self.states = []
         self._solve()
@@ -171,8 +170,7 @@ class HanoiGame:
         :return: True if the game is finished, False otherwise.
         """
 
-        self.finished = True if len(self.towers[2].discs) == self.n_discs else False
-        return self.finished
+        return True if len(self.towers[self.get_n_towers()-1].discs) == self.get_n_discs() else False
 
     def get_current_state(self):
         """

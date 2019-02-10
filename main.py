@@ -153,26 +153,3 @@ def show_menu():
 
 if __name__ == '__main__':
     show_menu()
-
-
-# def hanoiBasic(n, llista1, llista3, llista2, depth):
-#     if n > 0:
-#         hanoiBasic(n - 1, llista1, llista2, llista3, depth+1)
-#         print(depth)
-#         moveHanoi(llista1, llista3)
-#         hanoiBasic(n - 1, llista2, llista3, llista1, depth+1)
-#         print(depth)
-#
-#
-# def moveHanoi(llista1, llista3):
-#     a = llista1.pop()
-#     llista3.append(a)
-#     print("Move from" +str(llista1)+ "to" +str(llista3))
-#
-# if __name__ == "__main__":
-#     llista1 = [1,2,3,4,5]
-#     llista2 = []
-#     llista3 = []
-#
-#
-#     hanoiBasic(len(llista1), llista1, llista2, llista3, 1)

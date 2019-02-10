@@ -71,9 +71,6 @@ class Tower:
         :return: A string with the internal representation of the state.
         """
 
-        return ",".join(str(x) for x in self.discs)
-
-
     def __str__(self):
         """
         Returns a string with the representation of the state in the requested format.
