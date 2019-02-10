@@ -178,7 +178,7 @@ class HanoiGame:
 
         :return: The current state of the game.
         """
-        return self.states[-1]
+        return State(None, None, None, None, None, self.towers, self.n_discs)
 
     def __repr__(self):
         """
@@ -195,5 +195,4 @@ class HanoiGame:
 
         :return: A string with the representation of the current state of the game in the requested format
         """
-        s = State(None, None, None, None, None, self.towers, self.n_discs)
-        return str(s)
+        return str(State(None, None, None, None, None, self.towers, self.n_discs))
